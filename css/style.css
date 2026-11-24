@@ -123,6 +123,7 @@ input, textarea, select {
 
 /* ─── 2. Utility Classes ─────────────────────────────────────────── */
 .container {
+  width: 100%;
   max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: var(--space-6);
@@ -136,6 +137,7 @@ input, textarea, select {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-2);
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius-full);
@@ -144,12 +146,14 @@ input, textarea, select {
   font-size: var(--fs-sm);
   letter-spacing: 0.01em;
   transition: all var(--transition-base);
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
   cursor: pointer;
   text-decoration: none;
   border: 2px solid transparent;
   position: relative;
   overflow: hidden;
+  max-width: 100%;
 }
 
 .btn::after {
@@ -356,7 +360,7 @@ input, textarea, select {
 /* ─── 7. Back to Top ─────────────────────────────────────────────── */
 .back-to-top {
   position: fixed;
-  bottom: var(--space-20);
+  bottom: calc(var(--space-20) + 10px);
   right: var(--space-6);
   z-index: 999;
   display: flex;
@@ -1219,11 +1223,12 @@ input, textarea, select {
 /* ─── 14. Industrial Solutions ───────────────────────────────────── */
 .industrial {
   position: relative;
-  min-height: 640px;
+  min-height: 580px;
   display: flex;
   align-items: center;
   padding-block: var(--space-20);
   overflow: hidden;
+  width: 100%;
 }
 
 .industrial__bg-layer {
@@ -1257,6 +1262,7 @@ input, textarea, select {
   grid-template-columns: 1fr 1fr;
   gap: var(--space-12);
   align-items: center;
+  width: 100%;
 }
 
 .industrial__desc {
@@ -1275,16 +1281,18 @@ input, textarea, select {
 
 .industrial__features li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-3);
   font-size: var(--fs-base);
   color: rgba(255,255,255,0.9);
+  line-height: 1.5;
 }
 
 .industrial__features li i {
   color: var(--color-accent);
   font-size: var(--fs-lg);
   flex-shrink: 0;
+  margin-top: 3px;
 }
 
 /* Industrial Cards Grid */
@@ -1938,6 +1946,12 @@ input, textarea, select {
 
   .section { padding-block: var(--space-16); }
 
+  /* Prevent horizontal animation translations on smaller viewports */
+  .animate-on-scroll[data-animation="fade-left"],
+  .animate-on-scroll[data-animation="fade-right"] {
+    transform: translateY(20px);
+  }
+
   .stats-bar__inner {
     flex-direction: column;
     align-items: flex-start;
@@ -1950,6 +1964,50 @@ input, textarea, select {
   .services__divider { display: none; }
 
   .product-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+
+  /* Industrial Solutions mobile layout */
+  .industrial {
+    padding-block: var(--space-12);
+    min-height: auto;
+  }
+  .industrial__overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(6, 59, 92, 0.96) 0%,
+      rgba(6, 59, 92, 0.92) 50%,
+      rgba(6, 59, 92, 0.88) 100%
+    );
+  }
+  .industrial__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+  .industrial__desc {
+    font-size: var(--fs-base);
+    margin-block: var(--space-4);
+  }
+  .industrial__features {
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+  .industrial__features li {
+    font-size: var(--fs-sm);
+  }
+  .industrial__cards {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  .industrial-card {
+    padding: var(--space-5);
+  }
+  .industrial__content .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+    padding: 0.85rem 1.25rem;
+    font-size: var(--fs-sm);
+  }
 
   .proprietor-card {
     flex-direction: column;
@@ -1983,7 +2041,42 @@ input, textarea, select {
 
   .product-grid { grid-template-columns: 1fr; }
 
-  .industrial__cards { grid-template-columns: 1fr; }
+  /* Industrial adjustments for smaller phones */
+  .industrial {
+    padding-block: var(--space-10);
+  }
+  .industrial__inner {
+    gap: var(--space-6);
+  }
+  .industrial__cards {
+    grid-template-columns: 1fr;
+  }
+  .industrial-card {
+    padding: var(--space-4);
+  }
+  .industrial__content .btn {
+    font-size: var(--fs-xs);
+    padding: 0.8rem 1rem;
+    letter-spacing: 0;
+  }
+
+  /* Floating buttons spacing on mobile */
+  .whatsapp-float {
+    bottom: var(--space-4);
+    right: var(--space-4);
+    width: 50px;
+    height: 50px;
+  }
+  .whatsapp-float svg {
+    width: 24px;
+    height: 24px;
+  }
+  .back-to-top {
+    bottom: calc(var(--space-4) + 50px + 10px);
+    right: var(--space-4);
+    width: 40px;
+    height: 40px;
+  }
 
   .client-logo-grid { grid-template-columns: repeat(2, 1fr); }
 
