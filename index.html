@@ -62,7 +62,7 @@
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2.1" />
+  <link rel="stylesheet" href="css/style.css?v=2.2" />
 </head>
 <body>
 
@@ -938,10 +938,12 @@
             class="promo-video" 
             id="promoVideo"
             poster="assets/images/video-poster.jpg" 
-            preload="none"
+            preload="metadata"
+            playsinline
             aria-label="Utility Management Services company promotional video"
           >
             <source src="assets/videos/company-advertisement.mp4" type="video/mp4" />
+            <source src="assets/videos/company-advertisement.webm" type="video/webm" />
             Your browser does not support HTML5 video. Please update your browser.
           </video>
 
