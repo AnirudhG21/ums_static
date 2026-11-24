@@ -551,14 +551,22 @@ input, textarea, select {
 /* Mobile Menu */
 .mobile-menu {
   position: fixed;
-  inset: var(--navbar-height) 0 0 0;
-  background: rgba(255,255,255,0.98);
-  backdrop-filter: blur(20px);
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100vh - var(--navbar-height));
+  height: calc(100dvh - var(--navbar-height));
+  background: #ffffff;
   transform: translateX(100%);
-  transition: transform var(--transition-slow);
-  z-index: 850;
+  transition: transform var(--transition-base);
+  z-index: 1050;
   overflow-y: auto;
-  padding: var(--space-8) var(--space-6);
+  -webkit-overflow-scrolling: touch;
+  padding: var(--space-4) var(--space-6) var(--space-12) var(--space-6);
+  box-sizing: border-box;
+  box-shadow: -4px 0 24px rgba(6, 59, 92, 0.15);
 }
 
 .mobile-menu.open {
@@ -568,18 +576,37 @@ input, textarea, select {
 .mobile-menu__links {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-1);
+  width: 100%;
+  padding-bottom: var(--space-6);
+}
+
+.mobile-menu__links li {
+  width: 100%;
 }
 
 .mobile-menu__links .nav-link {
-  font-size: var(--fs-lg);
-  padding: var(--space-4);
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  padding: 0.85rem var(--space-2);
   border-bottom: 1px solid var(--color-border);
+  width: 100%;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.mobile-menu__links .nav-link:hover,
+.mobile-menu__links .nav-link.active {
+  color: var(--color-secondary);
+  background: var(--color-bg-alt);
 }
 
 .mobile-menu__links .btn {
-  margin-top: var(--space-4);
+  margin-top: var(--space-6);
   font-size: var(--fs-base);
+  width: 100%;
+  justify-content: center;
 }
 
 /* ─── 9. Hero Section ────────────────────────────────────────────── */
@@ -704,6 +731,22 @@ input, textarea, select {
   font-weight: 600;
   color: var(--color-accent);
   margin-bottom: var(--space-4);
+}
+
+.video-card__player-wrap {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  background: #000;
+  box-shadow: var(--shadow-md);
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .video-card__preview {

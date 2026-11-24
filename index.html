@@ -62,7 +62,7 @@
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2.2" />
+  <link rel="stylesheet" href="css/style.css?v=2.3" />
 </head>
 <body>
 
@@ -132,23 +132,23 @@
         </button>
       </div>
     </div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
-      <nav aria-label="Mobile navigation">
-        <ul class="mobile-menu__links" role="list">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#about" class="nav-link">About Us</a></li>
-          <li><a href="#products" class="nav-link">Products</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#industrial" class="nav-link">Industrial Solutions</a></li>
-          <li><a href="#clients" class="nav-link">Our Clients</a></li>
-          <li><a href="#contact" class="nav-link">Contact Us</a></li>
-          <li><a href="#contact" class="btn btn--primary btn--full">Get a Quote</a></li>
-        </ul>
-      </nav>
-    </div>
   </header>
+
+  <!-- Mobile Navigation Drawer (Direct child of body to guarantee full-height view) -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <ul class="mobile-menu__links" role="list">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About Us</a></li>
+        <li><a href="#products" class="nav-link">Products</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#industrial" class="nav-link">Industrial Solutions</a></li>
+        <li><a href="#clients" class="nav-link">Our Clients</a></li>
+        <li><a href="#contact" class="nav-link">Contact Us</a></li>
+        <li><a href="#contact" class="btn btn--primary btn--full">Get a Quote</a></li>
+      </ul>
+    </nav>
+  </div>
 
   <main id="main-content">
 
@@ -193,19 +193,26 @@
           </div>
         </div>
 
-        <!-- Hero Video Card (Promo Ad Preview) -->
+        <!-- Hero Video Card (Inline Video Player) -->
         <div class="hero__video-card animate-on-scroll" data-animation="fade-left">
           <div class="video-card__label">
             <i class="ph ph-play-circle" aria-hidden="true"></i>
             Watch Our Story
           </div>
-          <div class="video-card__preview" id="heroVideoTrigger" role="button" tabindex="0" aria-label="Play company promotional video">
-            <img src="assets/images/hero-water.jpg" 
-                 alt="Click to play Utility Management Services company advertisement" 
-                 class="video-card__poster" />
-            <div class="video-card__play-btn" aria-hidden="true">
-              <i class="ph ph-play" aria-hidden="true"></i>
-            </div>
+          <div class="video-card__player-wrap">
+            <video 
+              class="hero-video" 
+              id="heroVideo"
+              poster="assets/images/video-poster.jpg" 
+              preload="metadata"
+              controls
+              playsinline
+              aria-label="Utility Management Services promo video"
+            >
+              <source src="assets/videos/company-advertisement.mp4" type="video/mp4" />
+              <source src="assets/videos/company-advertisement.webm" type="video/webm" />
+              Your browser does not support HTML5 video.
+            </video>
           </div>
           <p class="video-card__caption">30-second company advertisement</p>
         </div>
@@ -1469,6 +1476,6 @@
   </footer>
 
   <!-- Main Script -->
-  <script src="js/script.js?v=2.1"></script>
+  <script src="js/script.js?v=2.3"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@ function init() {
   initScrollAnimations();
   initProductTabs();
   initVideoSection();
-  initHeroVideoTrigger();
+  initHeroVideoSync();
   initContactForm();
   initBackToTop();
   initActiveNavLinks();
@@ -311,39 +311,20 @@ function initVideoSection() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   8. HERO VIDEO TRIGGER – Opens promo video section
+   8. HERO VIDEO – Inline Player & Audio/Playback Sync
    ════════════════════════════════════════════════════════════════════ */
-function initHeroVideoTrigger() {
-  const trigger = document.getElementById('heroVideoTrigger');
-  if (!trigger) return;
+function initHeroVideoSync() {
+  const heroVideo = document.getElementById('heroVideo');
+  const promoVideo = document.getElementById('promoVideo');
 
-  function scrollToVideo() {
-    const videoSection = document.getElementById('advertisement');
-    if (!videoSection) return;
-
-    const navbarHeight = 72;
-    const top = videoSection.getBoundingClientRect().top + window.scrollY - navbarHeight - 16;
-
-    window.scrollTo({ top: top, behavior: 'smooth' });
-
-    // Auto-play after scroll
-    setTimeout(function () {
-      const video = document.getElementById('promoVideo');
-      const overlay = document.getElementById('videoOverlay');
-      if (video && video.paused) {
-        video.play().catch(function () {});
-        if (overlay) overlay.classList.add('hidden-overlay');
-      }
-    }, 700);
+  if (heroVideo && promoVideo) {
+    heroVideo.addEventListener('play', function () {
+      if (!promoVideo.paused) promoVideo.pause();
+    });
+    promoVideo.addEventListener('play', function () {
+      if (!heroVideo.paused) heroVideo.pause();
+    });
   }
-
-  trigger.addEventListener('click', scrollToVideo);
-  trigger.addEventListener('keydown', function (e) {
-    if (e.key === ' ' || e.key === 'Enter') {
-      e.preventDefault();
-      scrollToVideo();
-    }
-  });
 }
 
 /* ═══════════════════════════════════════════════════════════════════
